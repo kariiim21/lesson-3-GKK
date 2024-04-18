@@ -7,10 +7,34 @@
 // runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
 //  // => [[34,'a'], [3,'b']]
 function runLengthEncoding(str) {
-    return []
+  let a = str.length
+  const word = []
+
+  if (a != 0){
+    const firstletter = [1]
+    firstletter.push(str[0])
+    word.push(firstletter);
+
+
+    for (let i = 1; i < a; i++){
+      if (str[i] != str[i - 1]){
+        const letter = [1]
+        letter.push(str[i])
+        word.push(letter);
+      }
+
+      else{
+        let b = word.pop() 
+        b[0] += 1
+        word.push(b);
+      }
+  }
+
+}
+    return word
 }
 
-
+//console.log(runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb"))
 
 
 

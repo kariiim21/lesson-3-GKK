@@ -35,13 +35,60 @@ A component will not appear at all if its value happens to be zero. Hence, 1 min
 *  Формально длительность, указанная в компоненте, не должна превышать любую допустимую более значимую единицу времени.
 *
 * * */
-function formatDuration (seconds) {
+// function formatDuration (seconds) {
+//     let sec = seconds;
+//     let min = sec/60;
+//     let hrs = min/60;
+//     let ds = hrs/24;
+//     let yrs = ds/365;
 
+//     console.log(min, hrs, ds, yrs)
+
+//     return(result)
+
+// }
+
+
+function formatDuration(seconds) {
+    if (seconds === 0) {
+        return "now";
+    }
+
+    const year = Math.floor(seconds / (60 * 60 * 24 * 365));
+    const day = Math.floor((seconds % (60 * 60 * 24 * 365)) / (60 * 60 * 24));
+    const hour = Math.floor((seconds % (60 * 60 * 24)) / (60 * 60));
+    const minute = Math.floor((seconds % (60 * 60)) / 60);
+    const second = seconds % 60;
+
+    const components = [];
+    if (year > 0) {
+        components.push(year > 1 ? year + ' years' : year + ' year');
+    }
+    if (day > 0) {
+        components.push(day > 1 ? day + ' days' : day + ' day');
+    }
+    if (hour > 0) {
+        components.push(hour > 1 ? hour + ' hours' : hour + ' hour');
+    }
+    if (minute > 0) {
+        components.push(minute > 1 ? minute + ' minutes' : minute + ' minute');
+    }
+    if (second > 0) {
+        components.push(second > 1 ? second + ' seconds' : second + ' second');
+    }
+
+    let result = '';
+    for (let i = 0; i < components.length; i++) {
+        if (result !== '' && i === components.length - 1) {
+            result += ' and ';
+        } else if (result !== '' && i < components.length - 1) {
+            result += ', ';
+        }
+        result += components[i];
+    }
+
+    return result;
 }
-
-
-
-
 
 
 

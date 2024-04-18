@@ -4,6 +4,14 @@
 * */
 
 function getVowelsCount(str) {
+    let b = 0
+    let c = str.length
+    for (let i = 0; i < c; i++){
+        if (str[i] == "a" || str[i] == "e" || str[i] == "i" || str[i] == "o" || str[i] == "u" || str[i] == "y")
+            b = b + 1
+    }
+
+    return (b)
 
 }
 

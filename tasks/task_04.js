@@ -11,12 +11,34 @@
 *  Вы можете использовать рекурсию
 * */
 
-function fibonacci(num) {
+//function fibonacci(num) {
+//    const fibonachi = [0, 1];
+//    for (let i = 2; i < num; i++){  
+//        fibonachi.push(fibonachi[i-1] + fibonachi[i-2]);
+//    }
+//
+//    return (fibonachi[num-1])
+//}
 
+
+function fibonacci(num) {
+    if (num === 0) {
+        return 0;
+    }
+
+    let a = 0, b = 1, temp;
+
+    for (let i = 2; i <= num; i++) {
+        temp = a + b;
+        a = b;
+        b = temp;
+    }
+
+    return b;
 }
 
 
-
+//console.log(fibonacci(20))
 
 
 

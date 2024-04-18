@@ -6,10 +6,12 @@
 Note: оценки всегда будут уникальными (поэтому никаких повторяющихся значений) */
 
 function myLanguages(results) {
+  const res = Object.entries(results).filter(([, score]) => score >= 60).sort((a, b) => b[1] - a[1])
 
+  return res.map(([lang]) => lang);
 }
 
-
+//console.log(myLanguages({"Java": 10, "Ruby": 80, "Python": 65}))
 
 
 
